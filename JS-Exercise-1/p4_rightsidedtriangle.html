@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd Number Pattern</title>
+</head>
+
+<body>
+
+    <h1>Odd Number Pattern</h1>
+
+    <script>
+
+        let rows = Number(prompt("Enter an odd number of rows:"));
+
+        if (rows % 2 === 0) {
+            alert("Please enter an odd number only.");
+        } 
+        else {
+
+            let middle = Math.ceil(rows / 2);
+
+            for (let i = 1; i <= middle; i++) {
+
+                let pattern = "";
+                
+                for (let j = 1; j <= i; j++) {
+                    pattern += "* ";
+                }
+
+                console.log(pattern);
+            }
+            
+            for (let i = middle - 1; i >= 1; i--) {
+
+                let pattern = "";
+
+                for (let j = 1; j <= i; j++) {
+                    pattern += "* ";
+                }
+
+                console.log(pattern);
+            }
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Range</title>
+</head>
+<body>
+
+    <h1>Character Range</h1>
+
+    <script>
+        let jump = Number(prompt("Enter the jump value:"));
+
+        function num_string_range(start, end, step) {
+
+            let result = [];
+
+            let startCode = start.charCodeAt(0);
+            let endCode = end.charCodeAt(0);
+
+            for (let i = startCode; i <= endCode; i = i + step) {
+
+                result.push(String.fromCharCode(i));
+
+            }
+
+            return result;
+        }
+
+
+        let output = num_string_range("a", "z", jump);
+
+        console.log(output);
+
+    </script>
+
+</body>
+</html>

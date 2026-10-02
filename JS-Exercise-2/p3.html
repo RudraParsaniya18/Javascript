@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Most Frequent Item</title>
+</head>
+<body>
+
+    <h1>Most Frequent Item</h1>
+
+    <script>
+
+        let static_array = [0, 1, 1, 2, 3, 4, 5, 5, 5, 6, 7, 7, 8, 9];
+
+        let count = {};
+        let mostFrequent;
+        let maxCount = 0;
+
+        for (let i = 0; i < static_array.length; i++) {
+
+            let item = static_array[i];
+
+            if (count[item]) {
+                count[item]++;
+            } else {
+                count[item] = 1;
+            }
+
+            if (count[item] > maxCount) {
+                maxCount = count[item];
+                mostFrequent = item;
+            }
+        }
+
+        console.log("Most frequent item = " + mostFrequent);
+
+    </script>
+
+</body>
+</html>

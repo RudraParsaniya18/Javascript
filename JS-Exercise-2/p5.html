@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations</title>
+</head>
+<body>
+
+    <h1>Union, Difference and Intersection</h1>
+
+    <script>
+
+        let array_a = [0, 1, 2, 3];
+        let array_b = [3, 4, 5];
+
+
+        // UNION
+        let union_array = [];
+
+        for (let i = 0; i < array_a.length; i++) {
+            if (!union_array.includes(array_a[i])) {
+                union_array.push(array_a[i]);
+            }
+        }
+
+        for (let i = 0; i < array_b.length; i++) {
+            if (!union_array.includes(array_b[i])) {
+                union_array.push(array_b[i]);
+            }
+        }
+
+
+        // A - B
+        let a_b_array = [];
+
+        for (let i = 0; i < array_a.length; i++) {
+            if (!array_b.includes(array_a[i])) {
+                a_b_array.push(array_a[i]);
+            }
+        }
+
+
+        // B - A
+        let b_a_array = [];
+
+        for (let i = 0; i < array_b.length; i++) {
+            if (!array_a.includes(array_b[i])) {
+                b_a_array.push(array_b[i]);
+            }
+        }
+
+
+        // INTERSECTION
+        let intersection_array = [];
+
+        for (let i = 0; i < array_a.length; i++) {
+            if (array_b.includes(array_a[i])) {
+                intersection_array.push(array_a[i]);
+            }
+        }
+
+
+        // OUTPUT
+        console.log("Array A:", array_a);
+        console.log("Array B:", array_b);
+        console.log("Union:", union_array);
+        console.log("A - B:", a_b_array);
+        console.log("B - A:", b_a_array);
+        console.log("Intersection:", intersection_array);
+
+    </script>
+
+</body>
+</html>

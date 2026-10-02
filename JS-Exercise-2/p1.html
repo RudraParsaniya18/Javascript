@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Dashes Between Even Numbers</title>
+</head>
+<body>
+
+    <h1>Insert Dashes Between Even Numbers</h1>
+
+    <script>
+
+        let number = prompt("Enter a number:");
+
+        let result = "";
+
+        for (let i = 0; i < number.length; i++) {
+
+            result += number[i];
+
+            if (
+                number[i] % 2 === 0 &&
+                number[i + 1] % 2 === 0
+            ) {
+                result += "-";
+            }
+        }
+
+        console.log("Input  = " + number);
+        console.log("Output = " + result);
+
+    </script>
+
+</body>
+</html>

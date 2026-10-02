@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thousands Separator</title>
+</head>
+<body>
+
+    <h1>Thousands Separator</h1>
+
+    <script>
+
+        function addCommas(number) {
+            return number.toLocaleString("en-US");
+        }
+
+        let inputNumber = Number(prompt("Enter an integer:"));
+        let output = addCommas(inputNumber);
+        console.log(output);
+
+    </script>
+
+</body>
+</html>

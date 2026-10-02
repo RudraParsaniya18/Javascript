@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert String</title>
+</head>
+<body>
+
+    <h1>Insert String</h1>
+
+    <script>
+
+        function insertString(staticString, inputString, position = 1) {
+
+            let before = staticString.slice(0, position);
+            let after = staticString.slice(position);
+
+            return before + inputString + after;
+        }
+
+        let staticString = prompt("Enter main string:");
+        let inputString = prompt("Enter string to insert:");
+        let inputPosition = Number(
+            prompt("Enter position:")
+        );
+
+        let result = insertString(
+            staticString,
+            inputString,
+            inputPosition
+        );
+
+        console.log(result);
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Difference</title>
+</head>
+<body>
+
+    <h1>Time Difference</h1>
+
+    <script>
+
+        function getTimeDifference(date1, date2) {
+
+            let parts1 = date1.split("/");
+            let day1 = Number(parts1[0]);
+            let month1 = Number(parts1[1]);
+            let year1 = Number(parts1[2]);
+
+            let parts2 = date2.split("/");
+            let day2 = Number(parts2[0]);
+            let month2 = Number(parts2[1]);
+            let year2 = Number(parts2[2]);
+
+            let startDate = new Date(year1, month1 - 1, day1);
+            let endDate = new Date(year2, month2 - 1, day2);
+
+            let difference = endDate - startDate;
+
+            let totalDays = difference / (1000 * 60 * 60 * 24);
+
+            let totalWeeks = Math.floor(totalDays / 7);
+            let remainingDays = totalDays % 7;
+
+            let totalHours = totalDays * 24;
+
+            let totalMinutes = totalHours * 60;
+
+            let years = year2 - year1;
+            let months = month2 - month1;
+            let days = day2 - day1;
+
+            if (days < 0) {
+                months--;
+
+                days = days +
+                    new Date(year2, month2 - 1, 0).getDate();
+            }
+
+            if (months < 0) {
+                years--;
+                months = months + 12;
+            }
+
+            console.log(years + " years " + months + " months " + days + " days");
+            console.log((years * 12 + months) + " months " + days + " days");
+            console.log(Math.floor(totalWeeks) + " weeks " + remainingDays + " days");
+            console.log(Math.floor(totalDays) + " days");
+            console.log(Math.floor(totalHours).toLocaleString() + " hours");
+            console.log(Math.floor(totalMinutes).toLocaleString() + " minutes");
+        }
+
+
+        // Take input from user
+
+        let date1 = prompt("Enter first date (DD/MM/YYYY):");
+
+        let date2 = prompt("Enter second date (DD/MM/YYYY):");
+
+
+        // Call function
+
+        getTimeDifference(date1, date2);
+
+    </script>
+
+</body>
+</html>

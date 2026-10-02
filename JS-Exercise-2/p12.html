@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Chop</title>
+</head>
+<body>
+
+    <h1>String Chop</h1>
+
+    <script>
+        function stringChop(inputString, inputLength) {
+            let result = [];
+            for (let i = 0; i < inputString.length; i = i + inputLength) {
+                result.push(
+                    inputString.slice(i, i + inputLength)
+                );
+            }
+            return result;
+        }
+        let inputString = prompt("Enter a string:");
+        let inputLength = Number(
+            prompt("Enter chunk length:")
+        );
+        let output = stringChop(
+            inputString,
+            inputLength
+        );
+        console.log(output);
+    </script>
+
+</body>
+</html>

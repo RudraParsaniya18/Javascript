@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Difference</title>
+</head>
+<body>
+
+    <h1>Date Difference</h1>
+
+    <script>
+
+        function getDateDifference(date1, date2) {
+
+            let parts1 = date1.split("/");
+            let parts2 = date2.split("/");
+
+            let day1 = Number(parts1[0]);
+            let month1 = Number(parts1[1]);
+            let year1 = Number(parts1[2]);
+
+            let day2 = Number(parts2[0]);
+            let month2 = Number(parts2[1]);
+            let year2 = Number(parts2[2]);
+
+            let years = year2 - year1;
+            let months = month2 - month1;
+            let days = day2 - day1;
+
+            if (days < 0) {
+                months--;
+                days = days + new Date(year2, month2 - 1, 0).getDate();
+            }
+
+            if (months < 0) {
+                years--;
+                months = months + 12;
+            }
+
+
+            return years + " year " +
+                   months + " months " +
+                   days + " days";
+        }
+
+
+        let date1 = prompt("Enter first date (DD/MM/YYYY):");
+        let date2 = prompt("Enter second date (DD/MM/YYYY):");
+
+        console.log(getDateDifference(date1, date2));
+
+    </script>
+
+</body>
+</html>

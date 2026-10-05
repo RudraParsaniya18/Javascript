@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hide Email</title>
+</head>
+<body>
+
+    <h1>Hide Email Address</h1>
+
+    <script>
+
+        function hideEmail(email) {
+
+            let parts = email.split("@");
+
+            let username = parts[0];
+            let domain = parts[1];
+
+            let visibleStart = username.slice(0, 2);
+            let visibleEnd = username.slice(-1);
+
+            let hiddenLength = username.length - 3;
+
+            let stars = "*".repeat(hiddenLength);
+
+            return visibleStart + stars + visibleEnd + "@" + domain;
+        }
+
+
+        let email = prompt("Enter your email:");
+
+        let result = hideEmail(email);
+
+        console.log(result);
+
+    </script>
+
+</body>
+</html>

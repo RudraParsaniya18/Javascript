@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Validation</title>
+</head>
+<body>
+
+    <h1>Email Validation</h1>
+
+    <script>
+
+        let email = prompt("Enter your email:");
+
+        let pattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+        if (pattern.test(email)) {
+            console.log("Valid email");
+        } else {
+            console.log("Invalid email");
+        }
+
+    </script>
+
+</body>
+</html>

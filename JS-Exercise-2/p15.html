@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete or Insert Object</title>
+</head>
+<body>
+
+<h1>Delete or Insert Object</h1>
+
+<script>
+
+    let static_array = [
+        { name: "Jack", age: 23 },
+        { name: "Sam", age: 12 },
+        { name: "Max", age: 20 }
+    ];
+
+
+    function modifyArray(array) {
+
+        let choice = prompt("Enter delete or insert:");
+
+        if (choice === "delete") {
+
+            let position = Number(prompt("Enter delete position:"));
+
+            if (position < 1 || position > array.length) {
+                console.log("Error: Position does not exist.");
+                return;
+            }
+
+            array.splice(position - 1, 1);
+
+            console.log(array);
+
+        } else if (choice === "insert") {
+
+            let position = Number(prompt("Enter insert position:"));
+            let name = prompt("Enter name:");
+            let age = Number(prompt("Enter age:"));
+
+            if (position < 1 || position > array.length + 1) {
+                console.log("Error: Position does not exist.");
+                return;
+            }
+
+            let newObject = {
+                name: name,
+                age: age
+            };
+
+            array.splice(position - 1, 0, newObject);
+
+            console.log(array);
+
+        } else {
+
+            console.log("Error: Please enter only delete or insert.");
+
+        }
+    }
+
+
+    modifyArray(static_array);
+
+</script>
+
+</body>
+</html>

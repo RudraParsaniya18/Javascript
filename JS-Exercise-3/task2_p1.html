@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Group People By Sports</title>
+</head>
+<body>
+
+    <h1>People Grouped By Sports</h1>
+
+    <script>
+
+        let people = [
+            {
+                Name: "Ravindra",
+                Sports: ["Chess", "Cricket"]
+            },
+            {
+                Name: "Ravi",
+                Sports: ["Cricket", "Football"]
+            },
+            {
+                Name: "Rishabh",
+                Sports: ["Table-Tennis", "Football"]
+            }
+        ];
+
+
+        function groupBySports(array) {
+
+            let sportsObject = {};
+
+            for (let i = 0; i < array.length; i++) {
+
+                let personName = array[i].Name;
+                let sports = array[i].Sports;
+
+                for (let j = 0; j < sports.length; j++) {
+
+                    let sport = sports[j];
+
+                    if (!sportsObject[sport]) {
+                        sportsObject[sport] = [];
+                    }
+
+                    sportsObject[sport].push(personName);
+                }
+            }
+
+            let result = [];
+
+            for (let sport in sportsObject) {
+
+                let object = {};
+
+                object[sport] = sportsObject[sport];
+
+                result.push(object);
+            }
+
+            return result;
+        }
+
+
+        let result = groupBySports(people);
+
+        console.log(result);
+
+    </script>
+
+</body>
+</html>

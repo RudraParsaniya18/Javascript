@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remove HTML Tags</title>
+</head>
+<body>
+
+    <h1>Remove HTML/XML Tags</h1>
+
+    <script>
+
+        function removeTags(str) {
+            return str.replace(/<[^>]*>/g, "");
+        }
+
+        let input = prompt("Enter a string with HTML/XML tags:");
+
+        let result = removeTags(input);
+
+        console.log(result);
+
+    </script>
+
+</body>
+</html>

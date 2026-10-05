@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Table</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Dynamic Table</h1>
+
+    <div id="tableContainer"></div>
+
+    <script>
+
+        function createTable(rows, columns) {
+
+            let table = document.createElement("table");
+
+            for (let i = 0; i < rows; i++) {
+
+                let row = document.createElement("tr");
+
+                for (let j = 0; j < columns; j++) {
+
+                    let cell = document.createElement("td");
+
+                    cell.textContent = "Row-" + i + " Column-" + j;
+
+                    row.appendChild(cell);
+                }
+
+                table.appendChild(row);
+            }
+
+            document.getElementById("tableContainer").appendChild(table);
+        }
+
+
+        let rows = Number(prompt("Enter number of rows:"));
+        let columns = Number(prompt("Enter number of columns:"));
+
+        createTable(rows, columns);
+
+    </script>
+
+</body>
+</html>

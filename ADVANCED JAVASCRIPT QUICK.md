@@ -874,3 +874,495 @@ Remember these key points:
 4. writable, enumerable, and configurable control property behavior.
 5. JavaScript searches the prototype chain when a property is not found directly on an object.
 6. F.prototype is especially important when using constructor functions with new.
+
+
+ADVANCED JAVASCRIPT — QUICK REVISION NOTES
+Topics: Classes & Inheritance to Regular Expressions
+
+==================================================
+1. CLASSES AND INHERITANCE
+==================================================
+
+Class:
+- A class is a blueprint for creating objects.
+- constructor() initializes object properties.
+- Methods define object behavior.
+
+Example:
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    speak() {
+        console.log(this.name + " makes a sound");
+    }
+}
+
+const dog = new Animal("Tommy");
+dog.speak();
+
+Inheritance:
+- extends allows one class to inherit from another class.
+- The child class can use parent methods and properties.
+- super() calls the parent constructor.
+- super.method() calls a parent method.
+- A child method with the same name overrides the parent method.
+
+Example:
+class Dog extends Animal {
+    constructor(name, breed) {
+        super(name);
+        this.breed = breed;
+    }
+
+    bark() {
+        console.log("Woof!");
+    }
+}
+
+Key points:
+- Call super() before using this in a derived constructor.
+- Method overriding allows child classes to provide their own behavior.
+
+
+==================================================
+2. ERROR HANDLING — try...catch
+==================================================
+
+try:
+- Contains code that might throw an error.
+
+catch:
+- Handles an error thrown inside the try block.
+
+finally:
+- Runs whether an error occurs or not.
+
+throw:
+- Throws an error manually.
+
+Example:
+try {
+    throw new Error("Something went wrong");
+} catch (error) {
+    console.log(error.message);
+} finally {
+    console.log("Finished");
+}
+
+Error object properties:
+- error.name: Type of error.
+- error.message: Error description.
+- error.stack: Stack trace, when available.
+
+Important:
+- try...catch handles synchronous errors in its scope.
+- Use try...catch with await to handle rejected Promises.
+- It does not automatically catch errors from unrelated asynchronous callbacks.
+
+
+==================================================
+3. CUSTOM ERRORS AND EXTENDING ERROR
+==================================================
+
+- new Error("message") creates a standard Error with a custom message.
+- extends Error creates a custom error class.
+- super(message) initializes the parent Error.
+- this.name sets the custom error name.
+- instanceof checks an object's class or inheritance.
+
+Example:
+class ValidationError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = "ValidationError";
+    }
+}
+
+try {
+    throw new ValidationError("Invalid input");
+} catch (error) {
+    if (error instanceof ValidationError) {
+        console.log(error.message);
+    }
+}
+
+Common custom error types:
+- ValidationError
+- AuthenticationError
+- NotFoundError
+
+Use custom errors when different errors need different handling.
+
+
+==================================================
+4. SYNCHRONOUS VS ASYNCHRONOUS
+==================================================
+
+Synchronous:
+- Executes code in sequence.
+- The next statement waits for the current statement to finish.
+- Example: normal calculations and console.log().
+
+Example:
+console.log("A");
+console.log("B");
+console.log("C");
+
+Output:
+A
+B
+C
+
+Asynchronous:
+- Allows certain operations to finish later.
+- JavaScript can continue other work while waiting.
+- Common examples: timers, API requests, file operations.
+
+Example:
+console.log("A");
+
+setTimeout(() => {
+    console.log("B");
+}, 1000);
+
+console.log("C");
+
+Output:
+A
+C
+B
+
+Important:
+- JavaScript runs synchronous code first.
+- Promise callbacks (microtasks) run after the current synchronous code finishes.
+- Timer callbacks run later through the event loop.
+- setTimeout(callback, 0) does not run the callback immediately.
+
+
+==================================================
+5. ASYNC / AWAIT
+==================================================
+
+async:
+- Makes a function return a Promise.
+- Allows await to be used inside the function.
+
+await:
+- Waits for a Promise to settle.
+- Gives the fulfilled value or throws the rejection reason.
+- Pauses the current async function, not the entire program.
+
+Example:
+async function getData() {
+    const result = await Promise.resolve("Data received");
+    console.log(result);
+}
+
+getData();
+
+Important:
+- An async function always returns a Promise.
+- await can be used inside async functions and at the top level of JavaScript modules.
+- Use try...catch to handle rejected Promises.
+
+API example:
+async function getUsers() {
+    try {
+        const response = await fetch("/api/users");
+
+        if (!response.ok) {
+            throw new Error("Request failed");
+        }
+
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+Note:
+fetch() does not reject automatically for HTTP errors such as 404.
+Check response.ok to detect unsuccessful HTTP responses.
+
+
+==================================================
+6. CALLBACKS
+==================================================
+
+- A callback is a function passed as an argument to another function.
+- The receiving function decides when to call it.
+- Callbacks can be synchronous or asynchronous.
+
+Example:
+function greet(name, callback) {
+    console.log("Hello " + name);
+    callback();
+}
+
+greet("Rudra", () => console.log("Welcome!"));
+
+Output:
+Hello Rudra
+Welcome!
+
+Callback hell:
+- Deeply nested callbacks that become difficult to read and maintain.
+- Promises and async/await can make dependent asynchronous operations easier to organize.
+
+Remember:
+Passing a function: greet("Rudra", sayBye)
+Calling a function: sayBye()
+
+
+==================================================
+7. PROMISES
+==================================================
+
+A Promise represents the eventual success or failure of an operation.
+
+Promise states:
+- Pending: Not yet settled.
+- Fulfilled: Completed successfully.
+- Rejected: Failed.
+
+Example:
+const promise = new Promise((resolve, reject) => {
+    const success = true;
+
+    if (success) {
+        resolve("Success");
+    } else {
+        reject(new Error("Failed"));
+    }
+});
+
+promise
+    .then(result => console.log(result))
+    .catch(error => console.log(error.message))
+    .finally(() => console.log("Finished"));
+
+Promise methods:
+- then(): Handles fulfillment; can transform or pass along a result.
+- catch(): Handles rejection.
+- finally(): Runs after settlement, regardless of outcome.
+- Promise.all(): Fulfills when all input Promises fulfill; rejects if one rejects.
+- Promise.allSettled(): Waits for all input Promises to settle.
+- Promise.race(): Settles with the first input Promise to settle.
+- Promise.any(): Fulfills with the first fulfilled input Promise; rejects if all reject.
+
+Promise.resolve(value):
+- Creates a fulfilled Promise with the given value.
+
+Promise.reject(reason):
+- Creates a rejected Promise.
+
+Remember:
+- Callbacks are functions.
+- A Promise represents an eventual result.
+- async/await is syntax for working conveniently with Promises.
+
+
+==================================================
+8. REGULAR EXPRESSIONS (REGEX / RegExp)
+==================================================
+
+Definition:
+A regular expression is a pattern used to search, match, validate, or replace text.
+
+Creation:
+const pattern = /hello/i;
+const pattern2 = new RegExp("hello", "i");
+
+A. CHARACTER CLASSES
+
+\d      Any digit (0–9)
+\D      Any non-digit
+\w      ASCII letters, digits, underscore
+\W      Any character outside \w
+\s      Whitespace (space, tab, newline, etc.)
+\S      Any non-whitespace character
+.       Any character except line terminators by default
+
+B. CHARACTER SETS
+
+[abc]           Any one of a, b, c
+[^abc]          Any character except a, b, c
+[a-z]           Lowercase ASCII letter
+[A-Z]           Uppercase ASCII letter
+[0-9]           Digit
+[a-zA-Z]        ASCII letter
+[a-zA-Z0-9]     ASCII letter or digit
+[a-zA-Z0-9_]    ASCII letter, digit, or underscore
+
+C. QUANTIFIERS
+
+a*          Zero or more occurrences of a
+a+          One or more occurrences of a
+a?          Zero or one occurrence of a
+a{3}        Exactly 3 occurrences of a
+a{2,}       At least 2 occurrences of a
+a{2,5}      Between 2 and 5 occurrences of a
+a{0,1}      Zero or one occurrence of a; same as a?
+
+Greedy vs lazy:
+a+      Greedy: matches as much as possible
+a+?     Lazy: matches as little as possible
+
+D. ANCHORS AND BOUNDARIES
+
+^abc        abc at the start of input
+abc$        abc at the end of input
+^abc$       Entire input must match abc
+\b          Word boundary
+\B          Not a word boundary
+
+With the m flag, ^ and $ also match individual line boundaries.
+
+E. GROUPS AND ALTERNATION
+
+(abc)       Capturing group
+(?:abc)     Non-capturing group
+(cat|dog)   Matches cat or dog
+(a)(b)      Two capturing groups
+\1          Backreference to first capturing group
+\2          Backreference to second capturing group
+
+F. LOOKAHEAD AND LOOKBEHIND
+
+a(?=b)      a followed by b
+a(?!b)      a not followed by b
+(?<=a)b     b preceded by a
+(?<!a)b     b not preceded by a
+
+These check surrounding text without including it in the match.
+
+G. ESCAPING SPECIAL CHARACTERS
+
+\.      Literal dot
+\*      Literal asterisk
+\+      Literal plus
+\?      Literal question mark
+\\      Literal backslash
+\(      Literal opening parenthesis
+\)      Literal closing parenthesis
+\[      Literal opening square bracket
+\]      Literal closing square bracket
+\{      Literal opening curly brace
+\}      Literal closing curly brace
+\|      Literal pipe
+\/      Literal slash, useful in regex literals
+
+H. REGEX FLAGS
+
+g       Global: find all matches
+i       Case-insensitive matching
+m       Multiline anchors
+s       Dot also matches line terminators
+u       Unicode-aware matching
+y       Sticky matching at lastIndex
+d       Include match indices
+v       Unicode sets and properties of strings
+
+Example:
+/hello/gi
+
+Matches all occurrences of hello regardless of case.
+
+I. COMMON REGEX METHODS
+
+regex.test(string)
+- Returns true or false.
+
+string.match(regex)
+- Returns match information or null.
+
+string.matchAll(regex)
+- Iterates over all matches; requires g.
+
+string.search(regex)
+- Returns the first match index or -1.
+
+string.replace(regex, replacement)
+- Replaces matching text.
+
+string.replaceAll(regex, replacement)
+- Replaces all matches; a regex must have g.
+
+regex.exec(string)
+- Returns match information or null.
+
+J. PRACTICAL REGEX EXAMPLES
+
+/^\d{4}$/ 
+- Exactly four digits.
+
+/^\d+$/
+- One or more digits only.
+
+/^[a-z]+$/
+- One or more lowercase ASCII letters.
+
+/^[A-Z]+$/
+- One or more uppercase ASCII letters.
+
+/^[a-zA-Z]+$/
+- One or more ASCII letters.
+
+/^[a-zA-Z0-9]+$/
+- One or more ASCII letters or digits.
+
+/^\w{3,12}$/
+- 3–12 ASCII word characters.
+
+/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+- Basic email-like format; not a complete email validator.
+
+/^\s+|\s+$/
+- Whitespace at the start or end.
+
+/\s+/g
+- One or more whitespace characters.
+
+/\d/g
+- Every digit.
+
+/^Hello/
+- Starts with Hello.
+
+/\.js$/
+- Ends with .js.
+
+/(\d)\1/
+- Two identical consecutive digits, such as 11 or 55.
+
+/cat|dog/
+- Matches cat or dog.
+
+Note:
+- Regex is useful for basic validation, searching, and replacing.
+- Real-world formats such as email addresses may require more complete validation.
+- Validate important user input on the server as well as the client.
+
+
+==================================================
+9. MOST IMPORTANT POINTS TO REMEMBER
+==================================================
+
+1. extends creates inheritance between classes.
+2. super() calls the parent constructor.
+3. throw raises an error; catch handles it.
+4. Custom errors can extend the built-in Error class.
+5. Synchronous code executes in sequence.
+6. Asynchronous work can finish later without blocking other JavaScript work.
+7. async functions always return Promises.
+8. await pauses the current async function until the awaited Promise settles.
+9. Callbacks are functions passed to other functions.
+10. Promises represent eventual success or failure.
+11. then() handles fulfillment; catch() handles rejection.
+12. Regex patterns match text using character classes, quantifiers, groups, and flags.
+13. test() checks for a match; match() retrieves match information; replace() changes matching text.
+
+END OF REVISION NOTES

@@ -1,0 +1,33 @@
+
+body {
+    background-color: #f5f6fa;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 900px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+}
+
+input {
+    height: 42px;
+}
+
+.btn {
+    min-width: 80px;
+}
+
+.table {
+    vertical-align: middle;
+}
+
+.action-btn {
+    margin: 0 4px;
+}

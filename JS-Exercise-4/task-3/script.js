@@ -40,7 +40,6 @@ renderBtn.addEventListener("click", function () {
     });
 });
 
-// Function to create a table row
 function createRow(firstName, lastName) {
     const row = tableBody.insertRow();
 
@@ -52,7 +51,6 @@ function createRow(firstName, lastName) {
     const buttonContainer = document.createElement("div");
     buttonContainer.className = "action-buttons";
 
-    // Create Edit button
     const editBtn = document.createElement("button");
     editBtn.textContent = "Edit";
     editBtn.className = "btn btn-warning btn-sm";
@@ -67,7 +65,6 @@ function createRow(firstName, lastName) {
         addBtn.classList.add("btn-success");
     });
 
-    // Create Delete button
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.className = "btn btn-danger btn-sm";

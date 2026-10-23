@@ -78,7 +78,7 @@ function createRow(firstName, lastName) {
 
             addBtn.textContent = "Add";
             addBtn.classList.remove("btn-success");
-            addBtn.classList.add("btn-primary");
+            addBtn.classList.add("btn-primary")
         }
 
         row.remove();

@@ -1,0 +1,42 @@
+body {
+    background-color: #f5f7fa;
+}
+
+h2 {
+    color: #212529;
+    font-weight: 600;
+}
+
+table {
+    background-color: white;
+}
+
+thead th {
+    white-space: nowrap;
+}
+
+td,
+th {
+    padding: 12px !important;
+}
+
+input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+tbody tr.selected-row {
+    background-color: #e7f1ff;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dynamic Table</title>
+
+    <!-- Bootstrap CSS for styling only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+
+        <h2 class="mb-4">Dynamic Employee Table</h2>
+
+        <!-- Action buttons -->
+        <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
+
+            <button id="addBtn" class="btn btn-primary">
+                Add Row
+            </button>
+
+            <button id="deleteBtn" class="btn btn-danger" disabled>
+                Delete Selected
+            </button>
+
+            <span id="selectedCount" class="fw-semibold">
+                0 rows selected
+            </span>
+
+        </div>
+
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>
+                            <input type="checkbox" id="selectAll" aria-label="Select all rows">
+                            Select All
+                        </th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tableBody">
+
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="rowCheckbox" aria-label="Select Rahul Sharma">
+                        </td>
+                        <td>Rahul</td>
+                        <td>Sharma</td>
+                        <td>rahul@example.com</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="rowCheckbox" aria-label="Select Priya Patel">
+                        </td>
+                        <td>Priya</td>
+                        <td>Patel</td>
+                        <td>priya@example.com</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="rowCheckbox" aria-label="Select Amit Verma">
+                        </td>
+                        <td>Amit</td>
+                        <td>Verma</td>
+                        <td>amit@example.com</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

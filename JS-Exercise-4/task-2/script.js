@@ -23,7 +23,6 @@ addBtn.addEventListener("click", function () {
         addBtn.classList.remove("btn-success");
         addBtn.classList.add("btn-primary");
     } else {
-        // Create a new table row
         const row = tableBody.insertRow();
 
         const firstNameCell = row.insertCell(0);
@@ -33,7 +32,6 @@ addBtn.addEventListener("click", function () {
         firstNameCell.textContent = firstName;
         lastNameCell.textContent = lastName;
 
-        // Create Edit button
         const editBtn = document.createElement("button");
         editBtn.textContent = "Edit";
         editBtn.className = "btn btn-warning btn-sm action-btn";
@@ -49,13 +47,11 @@ addBtn.addEventListener("click", function () {
             addBtn.classList.add("btn-success");
         });
 
-        // Create Delete button
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
         deleteBtn.className = "btn btn-danger btn-sm action-btn";
 
         deleteBtn.addEventListener("click", function () {
-            // If this is the row currently being edited, reset the form
             if (editRow === row) {
                 editRow = null;
                 addBtn.textContent = "Add";
@@ -69,11 +65,9 @@ addBtn.addEventListener("click", function () {
             row.remove();
         });
 
-        // Add buttons to the Actions cell
         actionCell.append(editBtn, deleteBtn);
     }
 
-    // Clear inputs after Add or Update
     firstNameInput.value = "";
     lastNameInput.value = "";
 });

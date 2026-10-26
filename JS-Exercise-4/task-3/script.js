@@ -84,12 +84,10 @@ function createRow(firstName, lastName) {
         row.remove();
     });
 
-    // Put both buttons inside the same div
     buttonContainer.append(editBtn, deleteBtn);
     actionCell.append(buttonContainer);
 }
 
-// Add or update a row
 addBtn.addEventListener("click", function () {
     const firstName = firstNameInput.value.trim();
     const lastName = lastNameInput.value.trim();
@@ -99,7 +97,6 @@ addBtn.addEventListener("click", function () {
         return;
     }
 
-    // Prevent duplicate people in the table
     const duplicate = Array.from(tableBody.rows).some(function (row) {
         if (row === editRow) {
             return false;
@@ -117,7 +114,6 @@ addBtn.addEventListener("click", function () {
     }
 
     if (editRow !== null) {
-        // Update the existing row at its original position
         editRow.cells[0].textContent = firstName;
         editRow.cells[1].textContent = lastName;
 
@@ -127,7 +123,6 @@ addBtn.addEventListener("click", function () {
         addBtn.classList.remove("btn-success");
         addBtn.classList.add("btn-primary");
     } else {
-        // Add a new row at the bottom
         createRow(firstName, lastName);
     }
 

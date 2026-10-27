@@ -1,0 +1,33 @@
+body {
+    background-color: #f5f7fb;
+}
+
+.card {
+    border: 0;
+    border-radius: 10px;
+}
+
+.navbar-brand {
+    font-weight: 600;
+}
+
+.course-card {
+    height: 100%;
+}
+
+.course-card .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.course-description {
+    flex-grow: 1;
+}
+
+#authMessage, #assignMessage {
+    color: #b02a37;
+}
+
+#studentAssignments table {
+    background: white;
+}

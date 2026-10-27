@@ -1,4 +1,3 @@
-// Get elements from the page
 const authSection = document.getElementById("authSection");
 const dashboardSection = document.getElementById("dashboardSection");
 const loginForm = document.getElementById("loginForm");
@@ -14,7 +13,6 @@ let users = JSON.parse(localStorage.getItem("lmsUsers")) || [];
 let courses = JSON.parse(localStorage.getItem("lmsCourses")) || [];
 let currentUser = JSON.parse(sessionStorage.getItem("lmsCurrentUser")) || null;
 
-// Add some sample courses the first time the website is opened
 if (courses.length === 0) {
     courses = [
         { id: 1, title: "HTML Basics", description: "Learn the structure of web pages." },

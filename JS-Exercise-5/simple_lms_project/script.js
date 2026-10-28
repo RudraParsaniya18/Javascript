@@ -295,7 +295,6 @@ assignForm.addEventListener("submit", function (event) {
     renderStudentAssignments();
 });
 
-// Show students and their assigned courses for the admin
 function renderStudentAssignments() {
     const container = document.getElementById("studentAssignments");
     if (currentUser.role !== "admin") return;
@@ -329,7 +328,6 @@ function renderStudentAssignments() {
     container.innerHTML = table;
 }
 
-// If the page is refreshed while signed in, reopen the dashboard
 if (currentUser) {
     // Get latest user information from local storage
     currentUser = users.find(function (user) {

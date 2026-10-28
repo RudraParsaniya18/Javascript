@@ -243,7 +243,6 @@ function removeCourse(courseId) {
     showDashboard();
 }
 
-// Fill the student dropdown
 function fillStudentDropdown() {
     const studentSelect = document.getElementById("studentSelect");
     studentSelect.innerHTML = '<option value="">Choose student</option>';

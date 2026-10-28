@@ -257,7 +257,6 @@ function fillStudentDropdown() {
     });
 }
 
-// Fill the course dropdown
 function fillCourseDropdown() {
     const courseSelect = document.getElementById("assignCourseSelect");
     courseSelect.innerHTML = '<option value="">Choose course</option>';
@@ -270,7 +269,6 @@ function fillCourseDropdown() {
     });
 }
 
-// Admin assigns a course to a student
 assignForm.addEventListener("submit", function (event) {
     event.preventDefault();
 

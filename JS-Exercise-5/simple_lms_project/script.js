@@ -235,7 +235,6 @@ function removeCourse(courseId) {
     saveCourses();
     saveUsers();
 
-    // Refresh current user in case its stored course list changed
     currentUser = users.find(function (user) {
         return user.id === currentUser.id;
     }) || currentUser;
@@ -329,7 +328,7 @@ function renderStudentAssignments() {
 }
 
 if (currentUser) {
-    // Get latest user information from local storage
+
     currentUser = users.find(function (user) {
         return user.id === currentUser.id;
     }) || null;

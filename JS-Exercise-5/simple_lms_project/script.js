@@ -198,7 +198,6 @@ function escapeHTML(value) {
     });
 }
 
-// Admin adds a course
 courseForm.addEventListener("submit", function (event) {
     event.preventDefault();
 

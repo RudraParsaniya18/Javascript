@@ -2,6 +2,14 @@
 // Get logged-in user
 let user = JSON.parse(localStorage.getItem("loggedInUser"));
 
+// Check admin access
+if (!user || user.role !== "admin") {
+    window.location.href = "signin.html";
+} else {
+    document.getElementById("welcomeMessage").innerText =
+        "Welcome, " + user.name;
+}
+
 // Check user and display name
 if (user) {
     document.getElementById("welcomeMessage").innerText =

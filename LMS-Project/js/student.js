@@ -1,9 +1,6 @@
 
-// Get logged-in user
-// Get logged-in user
 let user = JSON.parse(localStorage.getItem("loggedInUser"));
 
-// Check student access
 if (!user || user.role !== "student") {
     window.location.href = "signin.html";
 } else {
@@ -11,7 +8,6 @@ if (!user || user.role !== "student") {
         "Welcome, " + user.name;
 }
 
-// Display user name
 document.getElementById("welcomeMessage").innerText =
     "Welcome, " + user.name;
 
@@ -47,7 +43,7 @@ function displayMyCourses() {
                 <div class="col-md-4 mb-3">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">${course.name}</h5>
+                            <h5 class="card-titlxe">${course.name}</h5>
                             <p class="card-text">${course.description}</p>
                         </div>
                     </div>
